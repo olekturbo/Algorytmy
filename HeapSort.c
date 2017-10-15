@@ -15,6 +15,9 @@ void swap(int *a, int *b){
 }
 
 void Heapify(int *A, int i, int heapSize){
+	// i - korzen
+	// kazdy rodzic musi byc wiekszy niz syn
+	
   int largest=0;
   int l=2*i, r=2*i+1;
   if (l<=heapSize && A[l-1]>A[i-1]) largest=l;
