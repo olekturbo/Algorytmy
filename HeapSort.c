@@ -17,7 +17,11 @@ void swap(int *a, int *b){
 void Heapify(int *A, int i, int heapSize){
 	// i - korzen
 	// kazdy rodzic musi byc wiekszy niz syn
-	
+	// najwiekszy element jest zamieniany z ostatnim elementem
+	// najwiekszy element zostaje przypisany do ostatniego indeksu tablicy
+	// (petla) znowu sprawdzamy, czy jest zachowany kopiec maksymalny (kazdy rodzic wiekszy niz syn)
+	// (petla) znowu zamieniamy najwiekszy element z ostatnim i przypisujemy go do ostatniego dostepnego elementu tablicy
+	// itd. az nie bedzie wiecej dzieci
   int largest=0;
   int l=2*i, r=2*i+1;
   if (l<=heapSize && A[l-1]>A[i-1]) largest=l;
