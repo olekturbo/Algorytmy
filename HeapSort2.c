@@ -15,18 +15,19 @@ void swap(int *a, int *b){
 }
 
 void Heapify(int *A, int i, int heapSize){
-  int k, j;
-  k=A[i-1];
-  while (i<=heapSize/2){
-    j=2*i;
-    if (j<heapSize && A[j-1]<A[j]) j++;
-    if (k>=A[j-1]) break;
-    else{
-      A[i-1]=A[j-1];
-      i=j;
-    }
+  int largest;
+  int l,r;
+	while(i<= heapSize) {
+    	 l = 2*i;	
+    	 r = 2*i+1;
+	  if(A[l]>=A[i]) largest=l;
+		else largest=i;
+	  if(A[r])>=A[largest]) largest=r;
+	  if(largest != i) {swap(&A[i],&A[largest]);
+			    i = largest;
+			   }
   }
-  A[i-1]=k;
+	else break;
 }
 
 void BuildHeap(int *A, int rozmiar){
