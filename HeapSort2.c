@@ -1,7 +1,17 @@
 /* Aleksander Szewczak
  * Informatyka, II ROK
  * Grupa 5 */
- 
+
+ // i - korzen
+	// kazdy rodzic musi byc wiekszy niz syn
+	// najwiekszy element jest zamieniany z ostatnim elementem
+	// najwiekszy element zostaje przypisany do ostatniego indeksu tablicy
+	// (petla) znowu sprawdzamy, czy jest zachowany kopiec maksymalny (kazdy rodzic wiekszy niz syn)
+	// (petla) znowu zamieniamy najwiekszy element z ostatnim i przypisujemy go do ostatniego dostepnego elementu tablicy
+	// itd. az nie bedzie wiecej dzieci
+	// zlozonosc czasowa - O(nlog2(n))
+	// kompilacja - gcc -o HeapSort HeapSort.c
+// wywolanie - ./HeapSort plik
 
 
 #include <stdio.h>
@@ -15,19 +25,18 @@ void swap(int *a, int *b){
 }
 
 void Heapify(int *A, int i, int heapSize){
-  int largest;
-  int l,r;
-	while(i<= heapSize) {
-    	 l = 2*i;	
-    	 r = 2*i+1;
-	  if(A[l]>=A[i]) largest=l;
-		else largest=i;
-	  if(A[r])>=A[largest]) largest=r;
-	  if(largest != i) {swap(&A[i],&A[largest]);
-			    i = largest;
-			   }
+	while(1>0) {
+  int largest=0;
+  int l=2*i, r=2*i+1;
+  if (l<=heapSize && A[l-1]>A[i-1]) largest=l;
+  else largest=i;
+  if (r<=heapSize && A[r-1]>A[largest-1]) largest=r;
+  if (largest!=i){
+    swap(&A[largest-1], &A[i-1]);
+    i = largest;
   }
-	else break;
+  else break;
+}
 }
 
 void BuildHeap(int *A, int rozmiar){
